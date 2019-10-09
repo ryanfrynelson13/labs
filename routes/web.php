@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    return view('welcome');
+})->name('welcome');
 
 Route::get('/services', function () {
     return view('services');
@@ -34,3 +34,15 @@ Route::get('/blog-post', function () {
     return view('post');
 })->name('post');
 
+
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');
