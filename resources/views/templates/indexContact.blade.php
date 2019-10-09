@@ -1,0 +1,7 @@
+@yield('head')
+@yield('preloader')
+@yield('nav')
+@yield('header')
+@yield('google')
+@yield('contact')
+@yield('footer')

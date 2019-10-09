@@ -10,6 +10,33 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.copyDirectory('resources/Labs/fonts','public/fonts');
+mix.copyDirectory('resources/Labs/img','public/img');
+mix.copyDirectory('resources/Labs/js', 'resources/js');
+mix.copyDirectory('resources/Labs/css','resources/css');
+// Script Assets
+mix.scripts(
+   [
+       "resources/js/jquery-2.1.4.min.js",
+       "resources/js/bootstrap.min.js",
+       "resources/js/magnific-popup.min.js",
+       "resources/js/owl.carousel.min.js",
+       "resources/js/circle-progress.min.js",
+       "resources/js/map.js",
+       "resources/js/main.js"
+   ],
+   "public/js/all.js"
+);
+//Style Assets
+mix.sass('resources/sass/app.scss','public/css/fonts.css')
+mix.styles(
+   [
+       "resources/css/bootstrap.min.css",
+       "resources/css/font-awesome.min.css",
+       "resources/css/flaticon.css",
+       "resources/css/magnific-popup.css",
+       "resources/css/owl.carousel.css",
+       "resources/css/style.css"
+   ],
+   "public/css/app.css"
+);
