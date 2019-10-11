@@ -26,7 +26,8 @@ class DisplayController extends Controller
         $testimonials=Testimonial::all();
         $boss=Team::where('move',1);
         $teams=Team::where('move',0);
-        dd($boss);
+        $compact=[$contents,$medias,$services,$testimonials,$boss,$teams];
+        return view('welcome',compact('compact'));
         
     }
     public function services(){
