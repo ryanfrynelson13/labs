@@ -18,6 +18,7 @@ class CreateCommentairesTable extends Migration
             $table->string('photo');
             $table->string('name',128);
             $table->text('commentaire');
+            $table->string('email')->nullable();
             $table->bigInteger('article')->unsigned();
             $table->foreign('article')->on('articles')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

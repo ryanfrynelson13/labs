@@ -11,28 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', 'DisplayController@home')->name('welcome');
 
-Route::get('/services', function () {
-    return view('services');
-})->name('services');
+Route::get('/services', 'DisplayController@services')->name('services');
 
 
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog');
+Route::get('/blog', 'DisplayController@blog')->name('blog');
 
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', 'DisplayController@contact')->name('contact');
 
 
-Route::get('/blog-post', function () {
-    return view('post');
-})->name('post');
+Route::get('/blog-post', 'DisplayController@post')->name('post');
 
 
 Auth::routes();
