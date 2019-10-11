@@ -22,7 +22,7 @@ Route::get('/blog', 'DisplayController@blog')->name('blog');
 Route::get('/contact', 'DisplayController@contact')->name('contact');
 
 
-Route::get('/blog-post', 'DisplayController@post')->name('post');
+Route::get('/blog-post/{id}', 'DisplayController@post')->name('post');
 
 
 Auth::routes();

@@ -31,15 +31,36 @@ class DisplayController extends Controller
         
     }
     public function services(){
-        
+        $contents=Content::all();
+        $services=Service::paginate(9);
+        $projets=Projet::all();
+        $compact=[$contents,$services,$projets];
+        return view('services',compact('compact'));
     }
     public function contact(){
-        
+        $contents=Content::all();
+        return view('contact',compact('contents'));
     }
     public function blog(){
-        
+        $contents=Content::all();
+        $categories=Categorie::all();
+        $tags=Tag::all();
+        $articles=Article::paginate(3);
+        $commentaires=Commentaire::all();
+        $auteurs=Auteur::all();
+        $tagliens=Taglien::all();
+        $compact=[$contents,$categories,$tags,$articles,$commentaires,$auteurs,$tagliens];
+        return view('blog',compact('compact'));
     }
-    public function post(){
-        
+    public function post($id){
+        $contents=Content::all();
+        $categories=Categorie::all();
+        $tags=Tag::all();
+        $article=Article::find($id);
+        $commentaires=Commentaire::all();
+        $auteurs=Auteur::all();
+        $tagliens=Taglien::all();
+        $compact=[$contents,$categories,$tags,$article,$commentaires,$auteurs,$tagliens];
+        return view('post',compact('compact'));
     }
 }
