@@ -1,15 +1,28 @@
 <!-- Intro Section -->
-<div class="hero-section">
+<div class="hero-section">   
     <div class="hero-content">
         <div class="hero-center">
-            <img src="img/big-logo.png" alt="">
-            <p>Get your freebie template now!</p>
+        @foreach ($medias as $media)
+        @if ($media->placement === 'carousel logo')
+            <img src="{{$media->media_path}}" alt="">
+        @endif        
+        @endforeach
+        @foreach ($contents as $text)
+            @if ($text->placement === 'carousel text')
+                    <p>{{$text->content}}</p>
+            @endif
+        @endforeach
+            
         </div>
-    </div>
+    </div> 
+        
+    
     <!-- slider -->
     <div id="hero-slider" class="owl-carousel">
-        <div class="item  hero-item" data-bg="img/01.jpg"></div>
-        <div class="item  hero-item" data-bg="img/02.jpg"></div>
+        @foreach ($carousel as $image)
+            <div class="item  hero-item" data-bg={{$image->media_path}}></div>
+        @endforeach        
+        
     </div>
 </div>
 <!-- Intro Section -->

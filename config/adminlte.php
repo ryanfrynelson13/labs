@@ -132,7 +132,13 @@ return [
             'text'        => 'Navigation',
             'url'         => 'admin/nav',
             'icon'        => 'fas fa-directions',            
-            'label_color' => 'success',
+            
+        ],
+        [
+            'text'        => 'Carousel',
+            'url'         => 'admin/carousel',
+            'icon'        => 'fas fa-circle-notch',          
+            
         ],
         
         [

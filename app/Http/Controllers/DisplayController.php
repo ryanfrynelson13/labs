@@ -24,10 +24,11 @@ class DisplayController extends Controller
         $medias=Media::all();
         $services=Service::paginate(9);
         $testimonials=Testimonial::all();
-        $boss=Team::where('move',1);
-        $teams=Team::where('move',0);  
+        $boss=Team::where('move',1)->get();
+        $teams=Team::where('move',0)->get();
+        $carousel=Media::where('placement','img_carousel')->get();        
 
-        return view('welcome',compact('contents','medias','services','testimonials','boss','teams'));
+        return view('welcome',compact('contents','medias','services','testimonials','boss','teams','carousel'));
         
     }
 
