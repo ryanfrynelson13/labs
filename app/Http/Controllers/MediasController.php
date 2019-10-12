@@ -80,4 +80,42 @@ class MediasController extends Controller
         return redirect()->route('images');
         
     }
+
+    public function video(Request $request, Media $media){
+        $request->validate([
+            'video'=>'required'
+        ]);
+        $search='storage/';
+        $replace='';
+        $sub=$media->media_path;
+        $res=str_replace($search,$replace,$sub); 
+        
+        if(Storage::disk('public')->has($res)){
+            Storage::disk('public')->delete($res);
+        }
+        $fileName= request()->file('video')->getClientOriginalName();
+        $path= request()->file('video')->storeAs('video',$fileName);
+        $media->media_path = "storage/".$path;
+        $media->save();
+        return redirect()->route('about');
+        
+    }
+
+    public function lien(Request $request, Media $media){
+        $request->validate([
+            'lien'=>'required'
+        ]);
+        $search='storage/';
+        $replace='';
+        $sub=$media->media_path;
+        $res=str_replace($search,$replace,$sub); 
+        
+        if(Storage::disk('public')->has($res)){
+            Storage::disk('public')->delete($res);
+        }        
+        $media->media_path = request()->input('lien');
+        $media->save();
+        return redirect()->route('about');
+        
+    }
 }

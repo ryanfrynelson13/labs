@@ -45,4 +45,26 @@ class ContentsController extends Controller
         $content->save();
         return redirect()->route('carousel');
     }
+
+    public function about(){
+        $titre1=Content::find(6);
+        $bleu=Content::find(7);
+        $titre2=Content::find(8);
+        $text1=Content::find(9);
+        $text2=Content::find(10);
+        $bouton=Content::find(11);
+        $video=Media::find(6);
+        $image=Media::find(7);
+        
+
+        return view('templates.admin.about',compact('titre1','bleu','titre2','text1','text2','bouton','video','image'));
+    }
+
+    public function aboutUpdate(Request $request, Content $content)
+    {    
+       
+        $content->content = request()->input('content');          
+        $content->save();
+        return redirect()->route('about');
+    }
 }

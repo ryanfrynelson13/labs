@@ -37,5 +37,9 @@ class MediaTableSeeder extends Seeder
             "placement"=>"video_about",
             "media_path"=>"https://www.youtube.com/watch?v=JgHfx2v9zOU"
         ]);
+        Media::create([
+            "placement"=>"img_video",
+            "media_path"=>"img/video.jpg"
+        ]);
     }
 }

@@ -57,11 +57,7 @@ class ContentsTableSeeder extends Seeder
         Content::create([
             "placement"=>"about bouton contenu",
             "content"=>"Browse"  
-        ]);
-        Content::create([
-            "placement"=>"about bouton lien",
-            "content"=>"/"  
-        ]);
+        ]);       
         Content::create([
             "placement"=>"testimonials titre",
             "content"=>"What our clients say"  

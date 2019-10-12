@@ -53,6 +53,19 @@ Route::delete('admin/media/carousel/{media}/delete','MediasController@carouselDe
 Route::get('admin/media/carousel/create','MediasController@carouselCreate')->middleware('auth');
 
 
+Route::get('admin/about','ContentsController@about')->name('about')->middleware('auth');
+
+
+Route::patch('admin/about/{content}','ContentsController@aboutUpdate')->middleware('auth');
+
+
+Route::patch('admin/media/video/{media}','MediasController@video')->middleware('auth');
+
+
+Route::patch('admin/media/lien/{media}','MediasController@lien')->middleware('auth');
+
+
+
 Route::resource('admin/services','ServicesController');
 
 
