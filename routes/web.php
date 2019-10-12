@@ -24,6 +24,12 @@ Route::get('/contact', 'DisplayController@contact')->name('contact');
 
 Route::get('/blog-post/{id}', 'DisplayController@post')->name('post');
 
+Route::get('admin/nav','ContentsController@nav')->name('nav')->middleware('auth');
+
+Route::patch('admin/nav/{content}','ContentsController@navUpdate')->middleware('auth');
+
+Route::patch('admin/media/nav/{media}','MediasController@navUpdate')->middleware('auth');
+
 
 Auth::routes();
 

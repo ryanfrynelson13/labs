@@ -127,12 +127,11 @@ return [
 
     'menu' => [
        
-        ['header' => 'Navigation'],        
+        ['header' => 'Home Page'],        
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-file',
-            'label'       => 4,
+            'text'        => 'Navigation',
+            'url'         => 'admin/nav',
+            'icon'        => 'fas fa-directions',            
             'label_color' => 'success',
         ],
         
