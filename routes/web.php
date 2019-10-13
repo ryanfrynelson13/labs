@@ -101,8 +101,10 @@ Route::get('admin/news','ContentsController@news')->name('news')->middleware('au
 Route::patch('admin/news/{content}','ContentsController@newsUpdate')->middleware('auth');
 
 
-
 Route::resource('admin/services','ServicesController');
+
+
+Route::resource('admin/projets','ProjetsController');
 
 
 

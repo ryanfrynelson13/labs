@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 use App\Content;
 use App\Service;
@@ -22,11 +23,12 @@ class DisplayController extends Controller
     public function home(){
         $contents=Content::all();
         $medias=Media::all();
-        $services=Service::paginate(9);
+        $services=Service::paginate(9)->random();        
         $testimonials=Testimonial::all();
         $boss=Team::where('move',1)->get();
         $teams=Team::where('move',0)->get();
-        $carousel=Media::where('placement','img_carousel')->get();        
+        $carousel=Media::where('placement','img_carousel')->get(); 
+        
 
         return view('welcome',compact('contents','medias','services','testimonials','boss','teams','carousel'));
         
@@ -35,12 +37,14 @@ class DisplayController extends Controller
     public function services(){
         $contents=Content::all();
         $services=Service::paginate(9);
+        // $six=Service::reverse()->take(6)->get();
         $projets=Projet::all();
         $medias=Media::all();
         $nav1=Content::find(1);
         $nav2=Content::find(2);
+       
 
-        return view('services',compact('contents','services','projets','medias','nav1','nav2'));
+        return view('services',compact('contents','services','projets','medias','nav1','nav2','six'));
     }
 
     public function contact(){

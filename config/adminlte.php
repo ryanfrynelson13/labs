@@ -182,6 +182,12 @@ return [
             'icon'        => 'fas fa-newspaper',          
             
         ],
+        [
+            'text'        => 'Projets',
+            'url'         => 'admin/projets',
+            'icon'        => 'fas fa-briefcase',          
+            
+        ],
         
         
              

@@ -17,6 +17,9 @@
         </div>
         <div class="row">
             <!-- feature item -->
+            {{-- @foreach ($six as $service)
+                <h2>{{$service->titre}}</h2>
+            @endforeach --}}
             <div class="col-md-4 col-sm-4 features">
                 <div class="icon-box light left">
                     <div class="service-text">
