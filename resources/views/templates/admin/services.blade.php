@@ -25,8 +25,17 @@
               {{$service->titre}} <br>              
             </td>   
             <td>{{$service->text}}</td>
-            <td><button class="btn btn-danger" type="submit"">Delete</button></td>
-            <td><button class="btn btn-primary" type="submit"">Edit</button></td>
+            <form action="{{route('services.destroy',$service->id)}}" method="POST">
+            @csrf
+            @method('DELETE')
+              <td><button class="btn btn-danger" type="submit"">Delete</button></td>
+            </form>
+            <form action="{{route('services.edit',$service->id)}}" method="GET">
+            @csrf
+            @method('GET')
+              <td><button class="btn btn-primary" type="submit"">Edit</button></td>
+            </form>
+            
           </tr>
         @endforeach
         
@@ -38,6 +47,11 @@
     <!-- /.box-body -->
   </div>
   <div class="text-center">
-  <a href="/admins/album/new" class="btn btn-lg btn-success">ADD ALBUM</a>
+    <form action="{{route('services.create')}}" method="GET">
+    @csrf
+    @method('GET')
+        <button type="submit" class="btn btn-lg btn-success">Ajouter Service</button>
+    </form>
+  
   </div>
 @stop

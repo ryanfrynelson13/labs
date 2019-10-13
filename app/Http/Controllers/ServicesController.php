@@ -26,7 +26,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        return view('templates.admin.addService');
     }
 
     /**
@@ -37,7 +37,18 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'logo'=>'required',
+            'titre'=>'required',
+            'text'=>'required'
+        ]);
+        $service= new Service();
+        $service->logo = request()->input('logo');
+        $service->titre = request()->input('titre');
+        $service->text = request()->input('text');
+        $service->save();
+
+        return redirect('/admin/services');
     }
 
     /**
@@ -59,7 +70,7 @@ class ServicesController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('templates.admin.editService',compact('service'));
     }
 
     /**
@@ -71,7 +82,17 @@ class ServicesController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $request->validate([
+            'logo'=>'required',
+            'titre'=>'required',
+            'text'=>'required'
+        ]);       
+        $service->logo = request()->input('logo');
+        $service->titre = request()->input('titre');
+        $service->text = request()->input('text');
+        $service->save();
+
+        return redirect('/admin/services');
     }
 
     /**
@@ -82,6 +103,9 @@ class ServicesController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        
+        $service->delete();
+        return redirect('/admin/services');
+        
     }
 }
