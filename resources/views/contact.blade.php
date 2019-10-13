@@ -13,7 +13,7 @@
 @endsection
 
 @section('header')
-    @include('templates.headerContact')
+    @include('templates.header2')
 @endsection
 
 @section('google')

@@ -67,4 +67,97 @@ class ContentsController extends Controller
         $content->save();
         return redirect()->route('about');
     }
+
+    public function testimonial(){
+        $titre=Content::find(12);
+
+        return view('templates.admin.testimonial',compact('titre'));
+    }
+
+    public function testimonialUpdate(Request $request, Content $content)
+    {    
+       
+        $content->content = request()->input('content');          
+        $content->save();
+        return redirect()->route('testimonials');
+    }
+
+    public function team(){
+        $titre1=Content::find(17);
+        $bleu=Content::find(18);
+        $titre2=Content::find(19);
+
+        return view('templates.admin.team',compact('titre1','bleu','titre2'));
+    }
+
+    public function teamUpdate(Request $request, Content $content)
+    {    
+       
+        $content->content = request()->input('content');          
+        $content->save();
+        return redirect()->route('team');
+    }
+
+    public function stand(){
+        $titre=Content::find(20);
+        $text=Content::find(21);
+        $bouton=Content::find(22);
+
+        return view('templates.admin.stand',compact('titre','text','bouton'));
+    }
+
+    public function standUpdate(Request $request, Content $content)
+    {    
+       
+        $content->content = request()->input('content');          
+        $content->save();
+        return redirect()->route('stand');
+    }
+
+    public function contact(){
+        $contents=Content::all();
+       
+
+        return view('templates.admin.contact',compact('contents'));
+    }
+
+    public function contactUpdate(Request $request, Content $content)
+    {    
+       
+        $content->content = request()->input('content');          
+        $content->save();
+        return redirect()->route('contact');
+    }
+
+    public function service(){
+        $contents=Content::all();
+       
+
+        return view('templates.admin.service',compact('contents'));
+    }
+
+    public function serviceUpdate(Request $request, Content $content)
+    {    
+       
+        $content->content = request()->input('content');          
+        $content->save();
+        return redirect()->route('service');
+    }
+
+    public function news(){
+        $titre=Content::find(39);
+        $input=Content::find(40);
+        $bouton=Content::find(41);
+       
+
+        return view('templates.admin.news',compact('titre','input','bouton'));
+    }
+
+    public function newsUpdate(Request $request, Content $content)
+    {    
+       
+        $content->content = request()->input('content');          
+        $content->save();
+        return redirect()->route('news');
+    }
 }

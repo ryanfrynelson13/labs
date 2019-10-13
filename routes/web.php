@@ -65,8 +65,46 @@ Route::patch('admin/media/video/{media}','MediasController@video')->middleware('
 Route::patch('admin/media/lien/{media}','MediasController@lien')->middleware('auth');
 
 
+Route::get('admin/testimonial','ContentsController@testimonial')->name('testimonials')->middleware('auth');
+
+
+Route::patch('admin/testimonial/{content}','ContentsController@testimonialUpdate')->middleware('auth');
+
+
+Route::get('admin/team','ContentsController@team')->name('team')->middleware('auth');
+
+
+Route::patch('admin/team/{content}','ContentsController@teamUpdate')->middleware('auth');
+
+
+Route::get('admin/stand','ContentsController@stand')->name('stand')->middleware('auth');
+
+
+Route::patch('admin/stand/{content}','ContentsController@standUpdate')->middleware('auth');
+
+
+Route::get('admin/contact','ContentsController@contact')->name('contact')->middleware('auth');
+
+
+Route::patch('admin/contact/{content}','ContentsController@contactUpdate')->middleware('auth');
+
+
+Route::get('admin/service','ContentsController@service')->name('service')->middleware('auth');
+
+
+Route::patch('admin/service/{content}','ContentsController@serviceUpdate')->middleware('auth');
+
+
+Route::get('admin/news','ContentsController@news')->name('news')->middleware('auth');
+
+
+Route::patch('admin/news/{content}','ContentsController@newsUpdate')->middleware('auth');
+
+
 
 Route::resource('admin/services','ServicesController');
+
+
 
 
 Auth::routes();

@@ -5,7 +5,12 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-4">
 					<div class="section-title left">
-						<h2>What our clients say</h2>
+						@foreach ($contents as $content)
+							@if ($content->placement === 'testimonials titre')
+								<h2>{{$content->content}}</h2>
+							@endif
+						@endforeach
+						
 					</div>
 					<div class="owl-carousel" id="testimonial-slide">
 						<!-- single testimonial -->

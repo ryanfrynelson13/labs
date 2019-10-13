@@ -36,13 +36,20 @@ class DisplayController extends Controller
         $contents=Content::all();
         $services=Service::paginate(9);
         $projets=Projet::all();
-        
-        return view('services',compact('contents','services','projets'));
+        $medias=Media::all();
+        $nav1=Content::find(1);
+        $nav2=Content::find(2);
+
+        return view('services',compact('contents','services','projets','medias','nav1','nav2'));
     }
 
     public function contact(){
         $contents=Content::all();
-        return view('contact',compact('contents'));
+        $medias=Media::all();
+        $nav1=Content::find(1);
+        $nav2=Content::find(4);
+
+        return view('contact',compact('contents','medias','nav1','nav2'));
     }
 
     public function blog(){
@@ -53,8 +60,11 @@ class DisplayController extends Controller
         $commentaires=Commentaire::all();
         $auteurs=Auteur::all();
         $tagliens=Taglien::all();
+        $medias=Media::all();
+        $nav1=Content::find(1);
+        $nav2=Content::find(3);
         
-        return view('blog',compact('contents','categories','tags','articles','tagliens'));
+        return view('blog',compact('contents','categories','tags','articles','tagliens','medias','nav1','nav2'));
     }
     
     public function post($id){
@@ -65,7 +75,10 @@ class DisplayController extends Controller
         $commentaires=Commentaire::all();
         $auteurs=Auteur::all();
         $tagliens=Taglien::all();
+        $medias=Media::all();
+        $nav1=Content::find(1);
+        $nav2=Content::find(3);
 
-        return view('blog',compact('contents','categories','tags','articles','commentaires','auteurs','tagliens'));
+        return view('blog',compact('contents','categories','tags','articles','commentaires','auteurs','tagliens','medias','nav1','nav2'));
     }
 }

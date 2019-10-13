@@ -146,7 +146,42 @@ return [
             'icon'        => 'far fa-address-card',          
             
         ],
-        
+        [
+            'text'        => 'Testimonial',
+            'url'         => 'admin/testimonial',
+            'icon'        => 'fas fa-quote-left',          
+            
+        ],
+        [
+            'text'        => 'Team',
+            'url'         => 'admin/team',
+            'icon'        => 'fas fa-users',          
+            
+        ],
+        [
+            'text'        => 'Stand out',
+            'url'         => 'admin/stand',
+            'icon'        => 'fas fa-sun',          
+            
+        ],
+        [
+            'text'        => 'Contact',
+            'url'         => 'admin/contact',
+            'icon'        => 'fas fa-mail-bulk',          
+            
+        ],
+        [
+            'text'        => 'Service',
+            'url'         => 'admin/service',
+            'icon'        => 'fas fa-concierge-bell',          
+            
+        ],
+        [
+            'text'        => 'Newsletter',
+            'url'         => 'admin/news',
+            'icon'        => 'fas fa-newspaper',          
+            
+        ],
         
         
              

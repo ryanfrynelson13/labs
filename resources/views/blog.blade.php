@@ -13,7 +13,7 @@
 @endsection
 
 @section('header')
-    @include('templates.headerBlog')
+    @include('templates.header2')
 @endsection
 
 @section('page')

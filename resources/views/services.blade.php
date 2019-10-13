@@ -13,7 +13,7 @@
 @endsection
 
 @section('header')
-    @include('templates.headerServices')
+    @include('templates.header2')
 @endsection
 
 @section('services')

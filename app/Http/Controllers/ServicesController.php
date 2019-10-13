@@ -14,7 +14,9 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        //
+        $services=Service::all();
+
+        return view('templates.admin.services',compact('services'));
     }
 
     /**

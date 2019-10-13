@@ -101,27 +101,7 @@ class ContentsTableSeeder extends Seeder
         Content::create([
             "placement"=>"promotion bouton",
             "content"=>"Browse"  
-        ]);
-        Content::create([
-            "placement"=>"input name",
-            "content"=>"Your name"  
-        ]);
-        Content::create([
-            "placement"=>"input email",
-            "content"=>"Your email"  
-        ]);
-        Content::create([
-            "placement"=>"input objet",
-            "content"=>"Subject"  
-        ]);
-        Content::create([
-            "placement"=>"input message",
-            "content"=>"Message"  
-        ]);
-        Content::create([
-            "placement"=>"contact bouton",
-            "content"=>"Send"  
-        ]);
+        ]);       
         Content::create([
             "placement"=>"contact titre",
             "content"=>"Contact us"  
@@ -150,6 +130,26 @@ class ContentsTableSeeder extends Seeder
             "placement"=>"contact email",
             "content"=>"hello@company.com"  
         ]); 
+        Content::create([
+            "placement"=>"input name",
+            "content"=>"Your name"  
+        ]);
+        Content::create([
+            "placement"=>"input email",
+            "content"=>"Your email"  
+        ]);
+        Content::create([
+            "placement"=>"input objet",
+            "content"=>"Subject"  
+        ]);
+        Content::create([
+            "placement"=>"input message",
+            "content"=>"Message"  
+        ]);
+        Content::create([
+            "placement"=>"contact bouton",
+            "content"=>"Send"  
+        ]);
         Content::create([
             "placement"=>"lab titre part1",
             "content"=>"Get in"  

@@ -2,8 +2,18 @@
 <div class="team-section spad">
     <div class="overlay"></div>
     <div class="container">
-        <div class="section-title">
-            <h2>Get in <span>the Lab</span> and  discover the world</h2>
+        @foreach ($contents as $content)
+            @if ($content->id === 35)
+                <div class="section-title">
+                    <h2>{{$content->content}}
+            @endif
+            @if ($content->id === 36)
+                <span>{{$content->content}}</span>
+            @endif
+            @if ($content->id === 37)
+                {{$content->content}}</h2>
+            @endif
+            @if ($content->id === 38)
         </div>
         <div class="row">
             <!-- feature item -->
@@ -78,8 +88,12 @@
             </div>
         </div>
         <div class="text-center mt100">
-            <a href="" class="site-btn">Browse</a>
+            <a href="" class="site-btn">{{$content->content}}</a>
         </div>
     </div>
 </div>
+            @endif
+        @endforeach
+          
+       
 <!-- features section end-->

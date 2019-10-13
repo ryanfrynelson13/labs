@@ -2,16 +2,28 @@
 <div class="newsletter-section spad">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <h2>Newsletter</h2>
-            </div>
-            <div class="col-md-9">
-                <!-- newsletter form -->
-                <form class="nl-form">
-                    <input type="text" placeholder="Your e-mail here">
-                    <button class="site-btn btn-2">Newsletter</button>
-                </form>
-            </div>
+            @foreach ($contents as $content)
+                @if ($content->id === 39)
+                    <div class="col-md-3">
+                        <h2>{{$content->content}}</h2>
+                    </div>
+                @endif
+                @if ($content->id === 40)
+                    <div class="col-md-9">
+                        <!-- newsletter form -->
+                        <form class="nl-form">
+                            <input type="text" placeholder="{{$content->content}}">
+                @endif
+                @if ($content->id === 41)
+                            <button class="site-btn btn-2">{{$content->content}}</button>
+                        </form>
+                    </div>
+                @endif
+            @endforeach
+            
+            
+                    
+           
         </div>
     </div>
 </div>
