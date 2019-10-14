@@ -107,6 +107,9 @@ Route::resource('admin/services','ServicesController');
 Route::resource('admin/projets','ProjetsController');
 
 
+Route::resource('admin/testimonials','TestimonialsController');
+
+
 
 
 Auth::routes();

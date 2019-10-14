@@ -1,40 +1,40 @@
 @extends('adminlte::page')
 
-@section('css')
-   <link rel="stylesheet" href="/css/all.css">
-@endsection
 
 @section('title', 'AdminLTE')
 @section('content_header')
 
 <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Services Table</h3>
+      <h3 class="box-title">Testimonials Table</h3>
       
     </div>
     <!-- /.box-header -->
     <div class="box-body table-responsive no-padding">
       <table class="table table-hover">
         <tbody><tr>
-          <th>Logo</th>
-          <th>Titre</th>
-          <th>Texte</th>          
+          <th>Photo</th>
+          <th>Quote</th>
+          <th>Name</th>          
+          <th>Title</th>          
           <th>Delete</th>
           <th>Update</th>
         </tr>
-        @foreach ($services as $service)
+        @foreach ($testimonials as $testimonial)
             <tr>
-            <td><i class="{{$service->logo}}"></i></td>
+            <td><img class="img-fluid" src="/{{$testimonial->photo}}" alt=""></td>
+            <td>{{$testimonial->quote}}</td>
             <td>
-              {{$service->titre}} <br>              
+              {{$testimonial->name}} <br>              
             </td>   
-            <td>{{$service->text}}</td>
-            <form action="{{route('services.destroy',$service->id)}}" method="POST">
+            <td>{{$testimonial->title}}</td>
+           
+            <form action="{{route('testimonials.destroy',$testimonial->id)}}" method="POST">
             @csrf
             @method('DELETE')
               <td><button class="btn btn-danger" type="submit"">Delete</button></td>
             </form>
-            <form action="{{route('services.edit',$service->id)}}" method="GET">
+            <form action="{{route('testimonials.edit',$testimonial->id)}}" method="GET">
             @csrf
             @method('GET')
               <td><button class="btn btn-primary" type="submit"">Edit</button></td>
@@ -51,10 +51,10 @@
     <!-- /.box-body -->
   </div>
   <div class="text-center">
-    <form action="{{route('services.create')}}" method="GET">
+    <form action="{{route('testimonials.create')}}" method="GET">
     @csrf
     @method('GET')
-        <button type="submit" class="btn btn-lg btn-success">Ajouter Service</button>
+        <button type="submit" class="btn btn-lg btn-success">Ajouter Testimonial</button>
     </form>
   
   </div>

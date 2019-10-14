@@ -57,6 +57,7 @@ class ServicesTableSeeder extends Seeder
             "logo"=>"flaticon-012-cube",
             "titre"=>"Ultra modern",
             "text"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla.."
-        ]);        
+        ]); 
+               
     }
 }

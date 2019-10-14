@@ -28,6 +28,6 @@ class ProjetsTableSeeder extends Seeder
             "titre"=>"SMART MARKETING",
             "content"=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla.."
         ]);
-        
+       
     }
 }

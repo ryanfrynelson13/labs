@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
+
 
 use App\Content;
 use App\Service;
@@ -23,7 +23,7 @@ class DisplayController extends Controller
     public function home(){
         $contents=Content::all();
         $medias=Media::all();
-        $services=Service::paginate(9)->random();        
+        $services=Service::inRandomOrder()->paginate(9);         
         $testimonials=Testimonial::all();
         $boss=Team::where('move',1)->get();
         $teams=Team::where('move',0)->get();
@@ -36,9 +36,10 @@ class DisplayController extends Controller
 
     public function services(){
         $contents=Content::all();
-        $services=Service::paginate(9);
+        $services=Service::inRandomOrder()->paginate(9);
+        // dd($services);  
         // $six=Service::reverse()->take(6)->get();
-        $projets=Projet::all();
+        $projets=Projet::inRandomOrder()->take(3)->get(); 
         $medias=Media::all();
         $nav1=Content::find(1);
         $nav2=Content::find(2);

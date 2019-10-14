@@ -32,6 +32,12 @@
         
       
     </div>
+
+</div>
+<div class="text-center">
+        <a class="btn btn-success" href="testimonials">View Testimonials</a>
+</div>
+        
     
     <!-- /.box-body -->
 

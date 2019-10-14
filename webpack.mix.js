@@ -23,7 +23,8 @@ mix.scripts(
        "resources/js/owl.carousel.min.js",
        "resources/js/circle-progress.min.js",
        "resources/js/map.js",
-       "resources/js/main.js"
+       "resources/js/main.js",
+       "node_modules/bootstrap-select/dist/js/bootstrap-select.js"
    ],
    "public/js/all.js"
 );
@@ -36,7 +37,8 @@ mix.styles(
        "resources/css/flaticon.css",
        "resources/css/magnific-popup.css",
        "resources/css/owl.carousel.css",
-       "resources/css/style.css"
+       "resources/css/style.css",
+       "node_modules/bootstrap-select/dist/css/bootstrap-select.css"
    ],
    "public/css/app.css"
 );
