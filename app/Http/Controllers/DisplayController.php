@@ -23,14 +23,22 @@ class DisplayController extends Controller
     public function home(){
         $contents=Content::all();
         $medias=Media::all();
-        $services=Service::inRandomOrder()->paginate(9);         
+        $services=Service::inRandomOrder()->paginate(9);
+        $trois=Service::inRandomOrder()->take(3)->get();         
         $testimonials=Testimonial::all();
         $boss=Team::where('move',1)->get();
-        $teams=Team::where('move',0)->get();
+        $team1=Team::all()->random(1);     
+        while($team1[0]->move){
+            $team1=Team::all()->random(1);   
+        }
+        $team2=Team::all()->random(1);     
+        while($team2[0]->move || $team2[0]->id === $team1[0]->id){
+            $team2=Team::all()->random(1);   
+        }        
         $carousel=Media::where('placement','img_carousel')->get(); 
         
 
-        return view('welcome',compact('contents','medias','services','testimonials','boss','teams','carousel'));
+        return view('welcome',compact('contents','medias','services','trois','testimonials','boss','team1','team2','carousel'));
         
     }
 

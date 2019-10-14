@@ -110,6 +110,9 @@ Route::resource('admin/projets','ProjetsController');
 Route::resource('admin/testimonials','TestimonialsController');
 
 
+Route::resource('admin/teams','TeamsController');
+
+
 
 
 Auth::routes();

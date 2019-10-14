@@ -20,25 +20,25 @@
             <!-- single member -->
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="img/team/1.jpg" alt="">
-                    <h2>Christinne Williams</h2>
-                    <h3>Project Manager</h3>
+                    <img src="{{$team1[0]->photo}}" alt="">
+                    <h2>{{$team1[0]->name}}</h2>
+                    <h3>{{$team1[0]->title}}</h3>
                 </div>
             </div>
             <!-- single member -->
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="img/team/2.jpg" alt="">
-                    <h2>Christinne Williams</h2>
-                    <h3>Junior developer</h3>
+                    <img src="{{$boss[0]->photo}}" alt="">
+                    <h2>{{$boss[0]->name}}</h2>
+                    <h3>{{$boss[0]->title}}</h3>
                 </div>
             </div>
             <!-- single member -->
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="img/team/3.jpg" alt="">
-                    <h2>Christinne Williams</h2>
-                    <h3>Digital designer</h3>
+                    <img src="{{$team2[0]->photo}}" alt="">
+                    <h2>{{$team2[0]->name}}</h2>
+                    <h3>{{$team2[0]->title}}</h3>
                 </div>
             </div>
         </div>

@@ -50,7 +50,10 @@
         
       
     </div>
-    
+</div>
+<div class="text-center">
+        <a class="btn btn-success" href="teams">View Team</a>
+</div>
     <!-- /.box-body -->
 
 @stop
