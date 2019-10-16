@@ -1,5 +1,8 @@
 	<!-- page section -->
 	<div class="page-section spad">
+			@foreach ($articles as $article)
+            <a href="/blog-post/{{$article->id}}">Test</a>
+        	@endforeach
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-sm-7 blog-posts">

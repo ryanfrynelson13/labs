@@ -24,7 +24,9 @@ class UsersTableSeeder extends Seeder
             "name"=>"Lore Williams",
             "email"=>"lorewilliams@editeur.com",
             "password"=>bcrypt("editeur"),
-            "role"=>"editeur"
+            "role"=>"editeur",
+            "photo"=>"img/avatar/03.jpg",
+            "description"=>"Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique."
         ]);
     }
 }

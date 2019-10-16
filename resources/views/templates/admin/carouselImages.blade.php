@@ -12,7 +12,7 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive " src="{{$image->media_path}}" alt="carousel picture">
+                    <img class="profile-user-img img-responsive " src="/{{$image->media_path}}" alt="carousel picture">
                     <br>
                     <div class="text-center">
                         <form action="/admin/media/carousel/{{$image->id}}" enctype="multipart/form-data" method="POST">

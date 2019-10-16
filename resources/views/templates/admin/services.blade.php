@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('css')
-   <link rel="stylesheet" href="/css/all.css">
+   <link rel="stylesheet" href="/css/flaticon.css">
 @endsection
 
 @section('title', 'AdminLTE')

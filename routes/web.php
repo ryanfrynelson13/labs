@@ -23,7 +23,7 @@ Route::get('/blog', 'DisplayController@blog')->name('blog');
 Route::get('/contact', 'DisplayController@contact')->name('contact');
 
 
-Route::get('/blog-post/{id}', 'DisplayController@post')->name('post');
+Route::get('/blog-post/{article}', 'DisplayController@post')->name('post');
 
 
 Route::get('admin/nav','ContentsController@nav')->name('nav')->middleware('auth');
@@ -110,7 +110,23 @@ Route::resource('admin/projets','ProjetsController');
 Route::resource('admin/testimonials','TestimonialsController');
 
 
+
 Route::resource('admin/teams','TeamsController');
+
+
+
+Route::resource('admin/articles','ArticlesController');
+
+
+
+Route::resource('admin/tags','TagsController');
+
+
+
+Route::resource('admin/users','UsersController');
+
+
+
 
 
 

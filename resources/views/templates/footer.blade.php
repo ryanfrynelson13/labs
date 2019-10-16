@@ -8,7 +8,8 @@
 
 
 <!--====== Javascripts & Jquery ======-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
-<script src="js/all.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrMxB-JJhV-w3QSoziqOEinzuxutow6Qw"></script>
+<script src="/js/all.js"></script>
+
 </body>
 </html>

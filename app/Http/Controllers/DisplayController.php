@@ -17,6 +17,7 @@ use App\Article;
 use App\Commentaire;
 use App\Auteur;
 use App\Taglien;
+use App\User;
 
 class DisplayController extends Controller
 {
@@ -44,16 +45,22 @@ class DisplayController extends Controller
 
     public function services(){
         $contents=Content::all();
-        $services=Service::inRandomOrder()->paginate(9);
-        // dd($services);  
-        // $six=Service::reverse()->take(6)->get();
+        $services=Service::inRandomOrder()->paginate(9);        
+        $six=Service::take(-6)->get();
+        for ($i=0; $i < 6; $i++) { 
+            if ($i<3) {
+                $debut[$i]=$six[$i];
+            } else{
+                $fin[$i]=$six[$i];
+            }
+        }        
         $projets=Projet::inRandomOrder()->take(3)->get(); 
         $medias=Media::all();
         $nav1=Content::find(1);
         $nav2=Content::find(2);
        
 
-        return view('services',compact('contents','services','projets','medias','nav1','nav2','six'));
+        return view('services',compact('contents','services','projets','medias','nav1','nav2','debut','fin'));
     }
 
     public function contact(){
@@ -71,7 +78,7 @@ class DisplayController extends Controller
         $tags=Tag::all();
         $articles=Article::paginate(3);
         $commentaires=Commentaire::all();
-        $auteurs=Auteur::all();
+        $auteurs=User::all();
         $tagliens=Taglien::all();
         $medias=Media::all();
         $nav1=Content::find(1);
@@ -80,18 +87,17 @@ class DisplayController extends Controller
         return view('blog',compact('contents','categories','tags','articles','tagliens','medias','nav1','nav2'));
     }
     
-    public function post($id){
+    public function post(Article $article){
         $contents=Content::all();
         $categories=Categorie::all();
-        $tags=Tag::all();
-        $article=Article::find($id);
+        $tags=Tag::all();        
         $commentaires=Commentaire::all();
-        $auteurs=Auteur::all();
+        $auteurs=User::all();
         $tagliens=Taglien::all();
         $medias=Media::all();
         $nav1=Content::find(1);
         $nav2=Content::find(3);
 
-        return view('blog',compact('contents','categories','tags','articles','commentaires','auteurs','tagliens','medias','nav1','nav2'));
+        return view('post',compact('contents','categories','tags','article','commentaires','auteurs','tagliens','medias','nav1','nav2'));
     }
 }

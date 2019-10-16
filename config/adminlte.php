@@ -188,6 +188,18 @@ return [
             'icon'        => 'fas fa-briefcase',          
             
         ],
+        [
+            'text'        => 'Articles',
+            'url'         => 'admin/articles',
+            'icon'        => 'fas fa-file-alt',          
+            
+        ],
+        [
+            'text'        => 'Users',
+            'url'         => 'admin/users',
+            'icon'        => 'fas fa-user',          
+            
+        ],
         
         
              

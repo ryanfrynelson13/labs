@@ -13,7 +13,7 @@ const mix = require('laravel-mix');
 mix.copyDirectory('resources/Labs/fonts','public/fonts');
 mix.copyDirectory('resources/Labs/img','public/img');
 mix.copyDirectory('resources/Labs/js', 'resources/js');
-mix.copyDirectory('resources/Labs/css','resources/css');
+mix.copyDirectory('resources/Labs/css','resources/css');http://127.0.0.1:8000/
 // Script Assets
 mix.scripts(
    [
