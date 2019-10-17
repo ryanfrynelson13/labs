@@ -23,6 +23,9 @@ Route::get('/blog', 'DisplayController@blog')->name('blog');
 Route::get('/contact', 'DisplayController@contact')->name('contact');
 
 
+Route::get('/blog-search', 'DisplayController@search')->name('search');
+
+
 Route::get('/blog-post/{article}', 'DisplayController@post')->name('post');
 
 

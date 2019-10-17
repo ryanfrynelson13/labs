@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -14,11 +15,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $admins=User::where('role','admin');
-        $editeurs=User::where('role','editeur');
-        $guests=User::where('role','guest');
+        $users=User::all();
 
-        return view('templates.admin.users',compact('admins','editeurs','guests'));
+        return view('templates.admin.users',compact('users'));
     }
 
     /**
@@ -84,6 +83,10 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        
+        if($user->id === Auth::id()){
+            
+            
+        }
     }
 }

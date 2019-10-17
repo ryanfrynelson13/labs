@@ -102,4 +102,28 @@ class DisplayController extends Controller
 
         return view('post',compact('contents','categories','tags','article','auteurs','tagliens','medias','nav1','nav2','catBar','tagBar'));
     }
+
+    public function search(){
+        $contents=Content::all();
+        $categories=Categorie::inRandomOrder()->get();
+        $catBar=$categories->take(6);
+        $tags=Tag::inRandomOrder()->get();
+        $tagBar=$tags->take(8);        
+        $commentaires=Commentaire::all();
+        $auteurs=User::all();
+        $tagliens=Taglien::all();
+        $medias=Media::all();
+        $nav1=Content::find(1);
+        $nav2=Content::find(3);
+        $articles=Article::where('publish',true)->paginate(3);
+        $search=[];
+        foreach($articles as $article){
+            if(stripos($article,request('search'))){
+                array_push($search,$article);
+            }
+        }
+        
+        
+        return view('search',compact('contents','categories','tags','search','tagliens','medias','nav1','nav2','catBar','tagBar'));
+    }
 }
