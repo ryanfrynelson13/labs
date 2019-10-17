@@ -101,29 +101,33 @@ Route::get('admin/news','ContentsController@news')->name('news')->middleware('au
 Route::patch('admin/news/{content}','ContentsController@newsUpdate')->middleware('auth');
 
 
-Route::resource('admin/services','ServicesController');
+Route::resource('admin/services','ServicesController')->middleware('auth');
 
 
-Route::resource('admin/projets','ProjetsController');
+Route::resource('admin/projets','ProjetsController')->middleware('auth');
 
 
-Route::resource('admin/testimonials','TestimonialsController');
-
-
-
-Route::resource('admin/teams','TeamsController');
+Route::resource('admin/testimonials','TestimonialsController')->middleware('auth');
 
 
 
-Route::resource('admin/articles','ArticlesController');
+Route::resource('admin/teams','TeamsController')->middleware('auth');
 
 
 
-Route::resource('admin/tags','TagsController');
+Route::resource('admin/articles','ArticlesController')->middleware('auth');
 
 
 
-Route::resource('admin/users','UsersController');
+Route::resource('admin/tags','TagsController')->middleware('auth');
+
+
+
+Route::resource('admin/users','UsersController')->middleware('auth');
+
+
+
+Route::post('/comment/{id}','ContentsController@comment');
 
 
 

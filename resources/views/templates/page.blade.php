@@ -1,76 +1,56 @@
 	<!-- page section -->
 	<div class="page-section spad">
-			@foreach ($articles as $article)
-            <a href="/blog-post/{{$article->id}}">Test</a>
-        	@endforeach
+	
+
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-sm-7 blog-posts">
-					<!-- Post item -->
-					<div class="post-item">
-						<div class="post-thumbnail">
-							<img src="img/blog/blog-2.jpg" alt="">
-							<div class="post-date">
-								<h2>03</h2>
-								<h3>Nov 2017</h3>
+					@foreach ($articles as $article)
+						@if ($article->publish)
+							<div class="post-item">
+								<div class="post-thumbnail">
+									<img src="{{$article->photo}}" alt="">
+									<div class="post-date">
+										<h2>{{$article->created_at->day}}</h2>
+										<h3>{{$article->created_at->shortMonthName}} {{$article->created_at->year}}</h3>
+									</div>
+								</div>
+								<div class="post-content">
+									<h2 class="post-title">{{$article->titre}}</h2>
+									<div class="post-meta">
+										@foreach ($categories as $categorie)
+											@if($categorie->id === $article->categorie)
+												<a href="">{{$categorie->categorie}}</a>
+											@endif
+										@endforeach
+										<a href="">
+										@foreach ($tagliens as $lien)
+											@if ($lien->article_id===$article->id)
+												@foreach ($tags as $tag)
+													@if ($tag->id === $lien->tag_id)
+														{{ucfirst($tag->tag)}}
+													@endif
+												@endforeach
+												
+											@endif
+											
+										@endforeach
+										</a>
+										
+										<a href="">{{$article->commentaires->count()}} Comments</a>
+									</div>
+									<p>{{substr($article->content, 0, 317)}}...</p>
+									<a href="blog-post/{{$article->id}}" class="read-more">Read More</a>
+								</div>
 							</div>
-						</div>
-						<div class="post-content">
-							<h2 class="post-title">Just a simple blog post</h2>
-							<div class="post-meta">
-								<a href="">Loredana Papp</a>
-								<a href="">Design, Inspiration</a>
-								<a href="">2 Comments</a>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-							<a href="blog-post" class="read-more">Read More</a>
-						</div>
-					</div>
-					<!-- Post item -->
-					<div class="post-item">
-						<div class="post-thumbnail">
-							<img src="img/blog/blog-1.jpg" alt="">
-							<div class="post-date">
-								<h2>03</h2>
-								<h3>Nov 2017</h3>
-							</div>
-						</div>
-						<div class="post-content">
-							<h2 class="post-title">Just a simple blog post</h2>
-							<div class="post-meta">
-								<a href="">Loredana Papp</a>
-								<a href="">Design, Inspiration</a>
-								<a href="">2 Comments</a>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-							<a href="blog-post" class="read-more">Read More</a>
-						</div>
-					</div>
-					<!-- Post item -->
-					<div class="post-item">
-						<div class="post-thumbnail">
-							<img src="img/blog/blog-3.jpg" alt="">
-							<div class="post-date">
-								<h2>03</h2>
-								<h3>Nov 2017</h3>
-							</div>
-						</div>
-						<div class="post-content">
-							<h2 class="post-title">Just a simple blog post</h2>
-							<div class="post-meta">
-								<a href="">Loredana Papp</a>
-								<a href="">Design, Inspiration</a>
-								<a href="">2 Comments</a>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo.</p>
-							<a href="blog-post" class="read-more">Read More</a>
-						</div>
-					</div>
+						@endif
+
+					@endforeach
+					
 					<!-- Pagination -->
 					<div class="page-pagination">
-						<a class="active" href="">01.</a>
-						<a href="">02.</a>
-						<a href="">03.</a>
+							{{ $articles->links() }}
 					</div>
 				</div>
+
 				

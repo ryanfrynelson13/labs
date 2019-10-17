@@ -156,6 +156,19 @@ class ArticlesController extends Controller
      */
     public function destroy(Article $article)
     {
+        if(Taglien::where('article_id',$article->id)->count()>0){
+            $liens= Taglien::where('article_id',$article->id)->get();
+            foreach($liens as $lien){
+                $tag=Tag::Find($lien->tag_id);
+                if($tag->count===1){
+                    $tag->delete();
+                }else{                  
+                    $tag->count -=1;
+                    $tag->save();
+                }
+                $lien->delete();
+            }
+        }
         if(Article::where('categorie',$article->categorie)->count()===1){
             $id=$article->categorie;
             $article->delete();

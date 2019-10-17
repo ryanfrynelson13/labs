@@ -167,7 +167,10 @@ class TagsController extends Controller
             $tag->count -=1;
             $tag->save();
         }
-        $lien=Taglien::find(request('lien'))->delete();
+        if(Taglien::where('tag_id',$tag->id)->count()>0){
+            $lien=Taglien::find(request('lien'))->delete();
+        }
+        
 
         return back();
     }

@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 
 use App\Content;
 use App\Media;
+use App\Commentaire;
 
 use Illuminate\Http\Request;
 
@@ -159,5 +160,17 @@ class ContentsController extends Controller
         $content->content = request()->input('content');          
         $content->save();
         return redirect()->route('news');
+    }
+
+    public function comment($id){
+        $comment=new Commentaire();
+        $comment->name= request('name');
+        $comment->commentaire= request('message');
+        $comment->email = request('email');
+        $comment->article = $id;
+        $comment->photo = 'http://lorempixel.com/200/200/people';
+        $comment->save();
+
+        return back();
     }
 }

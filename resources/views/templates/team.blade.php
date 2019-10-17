@@ -19,26 +19,46 @@
         <div class="row">
             <!-- single member -->
             <div class="col-sm-4">
-                <div class="member">
-                    <img src="{{$team1[0]->photo}}" alt="">
-                    <h2>{{$team1[0]->name}}</h2>
-                    <h3>{{$team1[0]->title}}</h3>
+                <div class="member"> 
+                    @if ($team->count()>=1)
+                        <img src="{{$team[0]->photo}}" alt="">
+                        <h2>{{$team[0]->name}}</h2>
+                        <h3>{{$team[0]->title}}</h3>
+                    @else
+                        <img src="storage/john/user-male-icon.png" alt="">
+                        <h2>John Doe</h2>
+                        <h3>Unknown</h3>
+                    @endif                   
+                        
                 </div>
             </div>
             <!-- single member -->
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="{{$boss[0]->photo}}" alt="">
-                    <h2>{{$boss[0]->name}}</h2>
-                    <h3>{{$boss[0]->title}}</h3>
+                    @if ($boss->count()===1)
+                        <img src="{{$boss[0]->photo}}" alt="">
+                        <h2>{{$boss[0]->name}}</h2>
+                        <h3>{{$boss[0]->title}}</h3>
+                    @else
+                        <img src="storage/john/user-male-icon.png" alt="">
+                        <h2>John Doe</h2>
+                        <h3>CEO</h3>
+                    @endif    
+                   
                 </div>
             </div>
             <!-- single member -->
             <div class="col-sm-4">
                 <div class="member">
-                    <img src="{{$team2[0]->photo}}" alt="">
-                    <h2>{{$team2[0]->name}}</h2>
-                    <h3>{{$team2[0]->title}}</h3>
+                    @if ($team->count()===2)
+                        <img src="{{$team[1]->photo}}" alt="">
+                        <h2>{{$team[1]->name}}</h2>
+                        <h3>{{$team[1]->title}}</h3>
+                    @else
+                        <img src="storage/john/user-male-icon.png" alt="">
+                        <h2>John Doe</h2>
+                        <h3>Unknown</h3>
+                    @endif      
                 </div>
             </div>
         </div>

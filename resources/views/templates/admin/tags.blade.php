@@ -49,8 +49,17 @@
                 </tbody>
             </table>
             
+            
           
         </div>
+</div>
+        <form action="{{route('articles.show',$article->id)}}" method="GET">
+        @csrf
+        @method('GET')
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-warning" type="submit">Terminer</button>
+            </div>
+        </form>
 
 
 @stop

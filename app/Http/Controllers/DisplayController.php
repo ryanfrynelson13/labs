@@ -15,31 +15,30 @@ use App\Tag;
 use App\Media;
 use App\Article;
 use App\Commentaire;
-use App\Auteur;
 use App\Taglien;
 use App\User;
 
 class DisplayController extends Controller
 {
     public function home(){
+
         $contents=Content::all();
         $medias=Media::all();
         $services=Service::inRandomOrder()->paginate(9);
         $trois=Service::inRandomOrder()->take(3)->get();         
         $testimonials=Testimonial::all();
-        $boss=Team::where('move',1)->get();
-        $team1=Team::all()->random(1);     
-        while($team1[0]->move){
-            $team1=Team::all()->random(1);   
-        }
-        $team2=Team::all()->random(1);     
-        while($team2[0]->move || $team2[0]->id === $team1[0]->id){
-            $team2=Team::all()->random(1);   
-        }        
+        $boss=Team::where('move',1)->get();       
+        $team=Team::inRandomOrder()->where('move',false)->get();
+        if($team->count()>=2){
+            $team->take(2);           
+        } else if($team->count()===1){
+            $team->take(1);
+        } 
+
         $carousel=Media::where('placement','img_carousel')->get(); 
         
 
-        return view('welcome',compact('contents','medias','services','trois','testimonials','boss','team1','team2','carousel'));
+        return view('welcome',compact('contents','medias','services','trois','testimonials','boss','team','carousel'));
         
     }
 
@@ -74,9 +73,11 @@ class DisplayController extends Controller
 
     public function blog(){
         $contents=Content::all();
-        $categories=Categorie::all();
-        $tags=Tag::all();
-        $articles=Article::paginate(3);
+        $categories=Categorie::inRandomOrder()->get();
+        $catBar=$categories->take(6);
+        $tags=Tag::inRandomOrder()->get();
+        $tagBar=$tags->take(8);
+        $articles=Article::where('publish',true)->paginate(3);
         $commentaires=Commentaire::all();
         $auteurs=User::all();
         $tagliens=Taglien::all();
@@ -84,20 +85,21 @@ class DisplayController extends Controller
         $nav1=Content::find(1);
         $nav2=Content::find(3);
         
-        return view('blog',compact('contents','categories','tags','articles','tagliens','medias','nav1','nav2'));
+        return view('blog',compact('contents','categories','tags','articles','tagliens','medias','nav1','nav2','catBar','tagBar'));
     }
     
     public function post(Article $article){
         $contents=Content::all();
         $categories=Categorie::all();
-        $tags=Tag::all();        
-        $commentaires=Commentaire::all();
+        $catBar=$categories->take(6);
+        $tags=Tag::all();
+        $tagBar=$tags->take(8);
         $auteurs=User::all();
         $tagliens=Taglien::all();
         $medias=Media::all();
         $nav1=Content::find(1);
         $nav2=Content::find(3);
 
-        return view('post',compact('contents','categories','tags','article','commentaires','auteurs','tagliens','medias','nav1','nav2'));
+        return view('post',compact('contents','categories','tags','article','auteurs','tagliens','medias','nav1','nav2','catBar','tagBar'));
     }
 }
