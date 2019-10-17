@@ -3,7 +3,7 @@
 @section('title', 'AdminLTE')
 
 @section('css')
-   <link rel="stylesheet" href="/css/all.css">
+   <link rel="stylesheet" href="/css/flaticon.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">  
 @endsection
 
@@ -79,7 +79,7 @@
         <label for="logo">Logo</label>
         <select class="selectpicker" name="logo" id="">
             @foreach ($arr as $item)
-                <option data-icon={{$item}} value={{$item}}></option> 
+                <option {{$service->logo===$item?'selected':''}} data-icon={{$item}} value={{$item}}></option> 
             @endforeach
         </select>      
         </div>

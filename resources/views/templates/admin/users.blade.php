@@ -59,7 +59,7 @@
     <!-- /.box-body -->
   </div>
   <div class="text-center">
-    <form action="{{route('services.create')}}" method="GET">
+    <form action="{{route('users.create')}}" method="GET">
     @csrf
     @method('GET')
         <button type="submit" class="btn btn-lg btn-success">Ajouter User</button>

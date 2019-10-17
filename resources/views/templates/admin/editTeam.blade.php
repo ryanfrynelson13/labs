@@ -26,7 +26,7 @@
         </div>
         <div class="form-group">
         <label for="Boss">Boss</label><br>
-        <input type="checkbox" name="boss" id="">
+        <input {{$team->move?'checked':''}} type="checkbox" name="boss" id="">
             
     </div>
     @if ($errors->any())
