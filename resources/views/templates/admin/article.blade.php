@@ -9,18 +9,32 @@
 @endsection
 @section('content_header')
 
-<div class="d-flex justify-content-around pt-5">
+<div class="d-flex justify-content-around p-5">
     <form action="{{route('articles.edit',$article->id)}}" method="GET">
     @csrf
     @method('GET')
         <button class="btn btn-lg btn-primary" type="submit">Modifier Contenu</button>
     </form>
     <a href="{{route('tags.index')}}?article={{$article->id}}" class="btn btn-lg btn-primary" type="submit">Modifier Tags</a>
+    @if (Auth::user()->isAdmin())       
+
+        @if (!$article->publish)
+        <form action="/published/{{$article->id}}" method="POST">
+        @csrf
+        @method('PATCH')
+                    
+            <button class="btn btn-lg btn-success" type="submit">Publish</button>
+        </form>     
+        @endif
+
+
+    @endif
     <form action="{{route('articles.destroy',$article->id)}}" method="POST">
     @csrf
     @method('DELETE')
         <button class="btn btn-lg btn-danger" type="submit">Delete Article</button>
-    </form>  
+    </form> 
+ 
    
 </div>
 
@@ -35,8 +49,11 @@
 						</div>
 						<div class="post-content">
 							<h2 class="post-title">{{$article->titre}}</h2>
-							<div class="post-meta">                                
-								<a href="">{{$categorie->categorie}}</a>
+							<div class="post-meta pb-2">  
+                                <span>Catégorie:</span>                              
+                                <a href="">{{$categorie->categorie}}</a>
+                                <br>
+                                <span>Tags:</span>
 								<a href="">
                                     @foreach ($tags as $tag)
                                         @foreach ($tagliens as $item)
@@ -62,6 +79,7 @@
             </div>
         </div>
     </div>
+   
    
 
 @stop

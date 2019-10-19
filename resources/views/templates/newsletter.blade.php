@@ -11,11 +11,11 @@
                 @if ($content->id === 40)
                     <div class="col-md-9">
                         <!-- newsletter form -->
-                        <form class="nl-form">
-                            <input type="text" placeholder="{{$content->content}}">
+                        <form action="newsletter" class="nl-form">
+                            <input type="text" name="email" placeholder="{{$content->content}}">
                 @endif
                 @if ($content->id === 41)
-                            <button class="site-btn btn-2">{{$content->content}}</button>
+                            <button type="submit" class="site-btn btn-2">{{$content->content}}</button>
                         </form>
                     </div>
                 @endif

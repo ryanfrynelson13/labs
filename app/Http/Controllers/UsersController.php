@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Taglien;
 use App\Tag;
 use App\Article;
+use App\Categorie;
 
 
 class UsersController extends Controller
@@ -175,9 +176,10 @@ class UsersController extends Controller
         if($user->id === Auth::id()){
             return back();
             
-        } else{
+        } else{           
             $articles=Article::where('user_id',$user->id)->get();
             foreach ($articles as $article) {
+                
                 $liens=Taglien::where('article_id',$article->id)->get();
                 foreach($liens as $lien){
                     $tag=Tag::find($lien->tag_id);
@@ -189,9 +191,54 @@ class UsersController extends Controller
                     }
                     
                 }
+                if(Article::where('categorie',$article->categorie)->count()===Article::where('categorie',$article->categorie)->where('user_id',$user->id)->count()){
+                    $user->delete();
+                    Categorie::find($article->categorie)->delete();
+                }else{
+                    $user->delete();
+                }
             }
-            $user->delete();
+            if($user){
+                $user->delete();
+            }
             return back();
         }
+    }
+
+    public function profile(){
+        $user=Auth::user();
+
+        return view('templates.editeur.profile',compact('user'));
+    }
+
+    public function editProfile(){
+        $user=Auth::user();
+
+        return view('templates.editeur.editProfile',compact('user'));
+    }
+
+    public function updateProfile(Request $request){
+        $user=Auth::user();
+        $request->validate([
+            'name'=>'required',
+            'photo'=>'required',
+            'description'=>'required',
+            'email'=>'required|unique:users,email',
+            
+        ]);
+        $fileName= request()->file('photo')->getClientOriginalName();
+        $path= request()->file('photo')->storeAs('user',$fileName);
+        $user->photo = "storage/".$path;
+        $user->name = request('name');        
+        $user->email = request('email');        
+        $user->description = request('description');        
+        if(request('password')){
+            $user->password= bcrypt(request('password'));          
+        }        
+        $user->save();
+        
+       
+
+        return redirect('/editeur/users');
     }
 }

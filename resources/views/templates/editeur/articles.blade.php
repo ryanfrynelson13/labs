@@ -20,12 +20,12 @@
                 </div>
                 <h3 class="profile-username text-center">{{$article->titre}}</h3>
                 <div > 
-                    @foreach ($users as $auteur)
+                    {{-- @foreach ($users as $auteur)
                         @if ($auteur->id === $article->user_id)
                             <p class="text-muted text-center">{{$auteur->name}}</p>
                         @endif
                         
-                    @endforeach
+                    @endforeach --}}
                               
                     <ul class="list-group list-group-unbordered">
 
@@ -73,22 +73,13 @@
                     <div>
 
                     </div>
-                    <div class="d-flex justify-content-around m-2">
+                    <div class="text-center m-2">
                         <form action="{{route('articles.show',$article->id)}}" method="GET">
                         @csrf
                         @method('GET')
                             
                             <button class="btn btn-info" type="submit">View</button>
                         </form>
-                        @if (!$article->publish)
-                            <form action="/published/{{$article->id}}" method="POST">
-                            @csrf
-                            @method('PATCH')
-                                        
-                                <button class="btn btn-success" type="submit">Publish</button>
-                            </form>     
-                        @endif
-                        
                     </div>      
                    
                         

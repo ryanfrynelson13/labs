@@ -9,9 +9,15 @@ use App\Taglien;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Post;
 
 class ArticlesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('admin')->only('index');
+       
+    }
     /**
      * Display a listing of the resource.
      *
@@ -65,6 +71,16 @@ class ArticlesController extends Controller
             $categorie=Categorie::where('categorie',request()->input('categorie'))->get();
             $article->categorie= $categorie[0]->id;
             $article->save();
+            if(!Auth::user()->isAdmin()){
+                $user=User::find(Auth::id());
+                $admins=User::where('role','admin')->get();
+                foreach ($admins as $admin) {
+    
+                    Mail::to($admin->email)->send(new Post($article,$user));
+                    
+                }
+            }  
+           
         } else{
            
             $categorie= new Categorie();
@@ -72,6 +88,16 @@ class ArticlesController extends Controller
             $categorie->save();
             $article->categorie = $categorie->id;
             $article->save();
+            if(!Auth::user()->isAdmin()){
+                $user=User::find(Auth::id());
+                $admins=User::where('role','admin')->get();
+                foreach ($admins as $admin) {
+    
+                    Mail::to($admin->email)->send(new Post($article,$user));
+                    
+                }
+            }  
+           
         }
        
         
@@ -132,14 +158,34 @@ class ArticlesController extends Controller
         if(Categorie::where('categorie',request()->input('categorie'))->count()===1){
             $categorie=Categorie::where('categorie',request()->input('categorie'))->get();
             $article->categorie= $categorie[0]->id;
+            $article->publish= false;
             $article->save();
+            if(!Auth::user()->isAdmin()){
+                $user=User::find(Auth::id());
+                $admins=User::where('role','admin')->get();
+                foreach ($admins as $admin) {
+    
+                    Mail::to($admin->email)->send(new Post($article,$user));
+                    
+                }
+            }  
         } else{
            
             $categorie= new Categorie();
             $categorie->categorie = request()->input('categorie');
             $categorie->save();
             $article->categorie = $categorie->id;
+            $article->publish= false;
             $article->save();
+            if(!Auth::user()->isAdmin()){
+                $user=User::find(Auth::id());
+                $admins=User::where('role','admin')->get();
+                foreach ($admins as $admin) {
+    
+                    Mail::to($admin->email)->send(new Post($article,$user));
+                    
+                }
+            }  
         }
        
         
@@ -176,8 +222,19 @@ class ArticlesController extends Controller
         }else{
             $article->delete();
         }
+           
        
+        
 
         return redirect('/admin/articles');
+    }
+
+    public function editeur(){
+        $articles=Article::where('user_id',Auth::id())->get();      
+        $categories=Categorie::all();
+        $tags=Tag::all();
+        $tagliens=Taglien::all();
+
+        return view('templates.editeur.articles',compact('articles','categories','tags','tagliens'));
     }
 }

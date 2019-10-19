@@ -8,6 +8,13 @@ namespace App\Http\Controllers;
 use App\Content;
 use App\Media;
 use App\Commentaire;
+use App\Newsletter;
+use App\Mail\Subscribed;
+use App\Mail\NewArticle;
+use App\Mail\Contact;
+use App\Article;
+use App\User;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 
@@ -172,5 +179,47 @@ class ContentsController extends Controller
         $comment->save();
 
         return back();
+    }
+
+    public function newsletter(Request $request){
+        $request->validate([            
+            'email'=>'required|unique:newsletters,email',
+           
+        ]);
+        $sub=new Newsletter();
+        $sub->email=request('email');
+        $sub->save();
+        Mail::to(request('email'))->send(new Subscribed());
+        return back();
+    }
+
+    public function published(Article $article){
+        
+        $article->publish=true;
+        $article->save();
+        $subs=Newsletter::all();
+        foreach($subs as $sub){
+            Mail::to($sub)->send(new newArticle($article));
+        } 
+        return redirect('admin/articles');
+         
+    }
+
+    public function message(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required',
+        ]);
+        $name=request('name');
+        $email=request('email');
+        $subject=request('subject');
+        $message=request('message');       
+        $admins=User::where('role','admin')->get();
+        foreach($admins as $admin){
+            
+            Mail::to($admin->email)->send(new Contact($name,$email,$subject,$message));
+        }
     }
 }

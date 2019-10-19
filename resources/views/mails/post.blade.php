@@ -1,0 +1,1 @@
+<h2>L'utilisateur {{$name}} demande la validation de l'article {{$titre}}.</h2>

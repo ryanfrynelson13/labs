@@ -1,0 +1,1 @@
+<h1>L'article {{$name}} vient d'etre posté</h1>

@@ -131,73 +131,99 @@ return [
         [
             'text'        => 'Navigation',
             'url'         => 'admin/nav',
-            'icon'        => 'fas fa-directions',            
+            'icon'        => 'fas fa-directions',
+            'can'         => 'admin'   
             
         ],
         [
             'text'        => 'Carousel',
             'url'         => 'admin/carousel',
-            'icon'        => 'fas fa-circle-notch',          
+            'icon'        => 'fas fa-circle-notch', 
+            'can'         => 'admin'         
             
         ],
         [
             'text'        => 'About',
             'url'         => 'admin/about',
-            'icon'        => 'far fa-address-card',          
+            'icon'        => 'far fa-address-card',
+            'can'         => 'admin'          
             
         ],
         [
             'text'        => 'Testimonial',
             'url'         => 'admin/testimonial',
-            'icon'        => 'fas fa-quote-left',          
+            'icon'        => 'fas fa-quote-left',
+            'can'         => 'admin'          
             
         ],
         [
             'text'        => 'Team',
             'url'         => 'admin/team',
-            'icon'        => 'fas fa-users',          
+            'icon'        => 'fas fa-users', 
+            'can'         => 'admin'         
             
         ],
         [
             'text'        => 'Stand out',
             'url'         => 'admin/stand',
-            'icon'        => 'fas fa-sun',          
+            'icon'        => 'fas fa-sun',
+            'can'         => 'admin'          
             
         ],
         [
             'text'        => 'Contact',
             'url'         => 'admin/contact',
-            'icon'        => 'fas fa-mail-bulk',          
+            'icon'        => 'fas fa-mail-bulk', 
+            'can'         => 'admin'         
             
         ],
         [
             'text'        => 'Service',
             'url'         => 'admin/service',
-            'icon'        => 'fas fa-concierge-bell',          
+            'icon'        => 'fas fa-concierge-bell',
+            'can'         => 'admin'          
             
         ],
         [
             'text'        => 'Newsletter',
             'url'         => 'admin/news',
-            'icon'        => 'fas fa-newspaper',          
+            'icon'        => 'fas fa-newspaper',  
+            'can'         => 'admin'        
             
         ],
         [
             'text'        => 'Projets',
             'url'         => 'admin/projets',
-            'icon'        => 'fas fa-briefcase',          
+            'icon'        => 'fas fa-briefcase',
+            'can'         => 'admin'          
             
         ],
         [
             'text'        => 'Articles',
             'url'         => 'admin/articles',
-            'icon'        => 'fas fa-file-alt',          
+            'icon'        => 'fas fa-file-alt', 
+            'can'         => 'admin'         
             
         ],
         [
             'text'        => 'Users',
             'url'         => 'admin/users',
-            'icon'        => 'fas fa-user',          
+            'icon'        => 'fas fa-user', 
+            'can'         => 'admin'         
+            
+        ],
+        [
+            'text'        => 'Profile',
+            'url'         => 'editeur/profile',
+            'icon'        => 'fas fa-user', 
+            'can'         => 'editeur'         
+            
+        ],
+        [
+            'text'        => 'Articles',
+            'url'         => 'editeur/articles',
+            'icon'        => 'fas fa-file-alt', 
+            'can'         => 'editeur'         
             
         ],
         

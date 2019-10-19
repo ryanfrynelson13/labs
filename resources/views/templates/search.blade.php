@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-md-8 col-sm-7 blog-posts">                
                 @if (count($search)===0)                    
-                    <div class="alert alert-danger">
-                           <ul>
-                                <li> Nothing Found...</li>                              
+                    <div class="alert alert-danger" >
+                           <ul class="list-group bg-danger">
+                                <li class="list-group-item bg-danger"> Nothing Found...</li>                              
                            </ul>
                        </div>
                 @else

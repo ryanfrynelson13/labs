@@ -1,0 +1,1 @@
+<h1>Vous etes bien abonné</h1>

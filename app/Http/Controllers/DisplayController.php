@@ -115,9 +115,10 @@ class DisplayController extends Controller
         $medias=Media::all();
         $nav1=Content::find(1);
         $nav2=Content::find(3);
-        $articles=Article::where('publish',true)->paginate(3);
+        $articles=Article::where('publish',true)->get();
         $search=[];
         foreach($articles as $article){
+            
             if(stripos($article,request('search'))){
                 array_push($search,$article);
             }

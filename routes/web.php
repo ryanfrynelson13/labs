@@ -26,95 +26,108 @@ Route::get('/contact', 'DisplayController@contact')->name('contact');
 Route::get('/blog-search', 'DisplayController@search')->name('search');
 
 
+Route::get('/message', 'ContentsController@message')->name('message');
+
+
 Route::get('/blog-post/{article}', 'DisplayController@post')->name('post');
 
 
-Route::get('admin/nav','ContentsController@nav')->name('nav')->middleware('auth');
+Route::get('admin/nav','ContentsController@nav')->name('nav')->middleware(['admin','auth']);
 
 
-Route::patch('admin/nav/{content}','ContentsController@navUpdate')->middleware('auth');
+Route::get('newsletter','ContentsController@newsletter')->name('newsletter');
 
 
-Route::patch('admin/media/nav/{media}','MediasController@navUpdate')->middleware('auth');
+Route::patch('published/{article}','ContentsController@published')->name('published')->middleware('auth');
 
 
-Route::get('admin/carousel','ContentsController@carousel')->name('carousel')->middleware('auth');
+Route::patch('admin/nav/{content}','ContentsController@navUpdate')->middleware(['admin','auth']);
 
 
-Route::get('admin/carousel/images','MediasController@carousel')->name('images')->middleware('auth');
+Route::patch('admin/media/nav/{media}','MediasController@navUpdate')->middleware(['admin','auth']);
 
 
-Route::patch('admin/carousel/{content}','ContentsController@carouselUpdate')->middleware('auth');
+Route::get('admin/carousel','ContentsController@carousel')->name('carousel')->middleware(['admin','auth']);
 
 
-Route::patch('admin/media/carousel/{media}','MediasController@carouselUpdate')->middleware('auth');
+Route::get('admin/carousel/images','MediasController@carousel')->name('images')->middleware(['admin','auth']);
 
 
-Route::delete('admin/media/carousel/{media}/delete','MediasController@carouselDelete')->middleware('auth');
+Route::patch('admin/carousel/{content}','ContentsController@carouselUpdate')->middleware(['admin','auth']);
 
 
-Route::get('admin/media/carousel/create','MediasController@carouselCreate')->middleware('auth');
+Route::patch('admin/media/carousel/{media}','MediasController@carouselUpdate')->middleware(['admin','auth']);
 
 
-Route::get('admin/about','ContentsController@about')->name('about')->middleware('auth');
+Route::delete('admin/media/carousel/{media}/delete','MediasController@carouselDelete')->middleware(['admin','auth']);
 
 
-Route::patch('admin/about/{content}','ContentsController@aboutUpdate')->middleware('auth');
+Route::get('admin/media/carousel/create','MediasController@carouselCreate')->middleware(['admin','auth']);
 
 
-Route::patch('admin/media/video/{media}','MediasController@video')->middleware('auth');
+Route::get('admin/about','ContentsController@about')->name('about')->middleware(['admin','auth']);
 
 
-Route::patch('admin/media/lien/{media}','MediasController@lien')->middleware('auth');
+Route::patch('admin/about/{content}','ContentsController@aboutUpdate')->middleware(['admin','auth']);
 
 
-Route::get('admin/testimonial','ContentsController@testimonial')->name('testimonials')->middleware('auth');
+Route::patch('admin/media/video/{media}','MediasController@video')->middleware(['admin','auth']);
 
 
-Route::patch('admin/testimonial/{content}','ContentsController@testimonialUpdate')->middleware('auth');
+Route::patch('admin/media/lien/{media}','MediasController@lien')->middleware(['admin','auth']);
 
 
-Route::get('admin/team','ContentsController@team')->name('team')->middleware('auth');
+Route::get('admin/testimonial','ContentsController@testimonial')->name('testimonials')->middleware(['admin','auth']);
 
 
-Route::patch('admin/team/{content}','ContentsController@teamUpdate')->middleware('auth');
+Route::patch('admin/testimonial/{content}','ContentsController@testimonialUpdate')->middleware(['admin','auth']);
 
 
-Route::get('admin/stand','ContentsController@stand')->name('stand')->middleware('auth');
+Route::get('admin/team','ContentsController@team')->name('team')->middleware(['admin','auth']);
 
 
-Route::patch('admin/stand/{content}','ContentsController@standUpdate')->middleware('auth');
+Route::patch('admin/team/{content}','ContentsController@teamUpdate')->middleware(['admin','auth']);
 
 
-Route::get('admin/contact','ContentsController@contact')->name('contact')->middleware('auth');
+Route::get('admin/stand','ContentsController@stand')->name('stand')->middleware(['admin','auth']);
 
 
-Route::patch('admin/contact/{content}','ContentsController@contactUpdate')->middleware('auth');
+Route::patch('admin/stand/{content}','ContentsController@standUpdate')->middleware(['admin','auth']);
 
 
-Route::get('admin/service','ContentsController@service')->name('service')->middleware('auth');
+Route::get('admin/contact','ContentsController@contact')->name('contact')->middleware(['admin','auth']);
 
 
-Route::patch('admin/service/{content}','ContentsController@serviceUpdate')->middleware('auth');
+Route::patch('admin/contact/{content}','ContentsController@contactUpdate')->middleware(['admin','auth']);
 
 
-Route::get('admin/news','ContentsController@news')->name('news')->middleware('auth');
+Route::get('admin/service','ContentsController@service')->name('service')->middleware(['admin','auth']);
 
 
-Route::patch('admin/news/{content}','ContentsController@newsUpdate')->middleware('auth');
+Route::patch('admin/service/{content}','ContentsController@serviceUpdate')->middleware(['admin','auth']);
 
 
-Route::resource('admin/services','ServicesController')->middleware('auth');
+Route::get('admin/news','ContentsController@news')->name('news')->middleware(['admin','auth']);
 
 
-Route::resource('admin/projets','ProjetsController')->middleware('auth');
+Route::patch('admin/news/{content}','ContentsController@newsUpdate')->middleware(['admin','auth']);
 
 
-Route::resource('admin/testimonials','TestimonialsController')->middleware('auth');
+Route::resource('admin/services','ServicesController')->middleware(['admin','auth']);
+
+
+Route::resource('admin/projets','ProjetsController')->middleware(['admin','auth']);
+
+
+Route::resource('admin/testimonials','TestimonialsController')->middleware(['admin','auth']);
 
 
 
-Route::resource('admin/teams','TeamsController')->middleware('auth');
+Route::resource('admin/teams','TeamsController')->middleware(['admin','auth']);
+
+
+
+Route::get('editeur/articles','ArticlesController@editeur')->middleware('auth');
 
 
 
@@ -122,11 +135,23 @@ Route::resource('admin/articles','ArticlesController')->middleware('auth');
 
 
 
-Route::resource('admin/tags','TagsController')->middleware('auth');
+Route::resource('admin/tags','TagsController')->middleware(['admin','auth']);
 
 
 
-Route::resource('admin/users','UsersController')->middleware('auth');
+Route::get('editeur/profile','UsersController@profile')->middleware('auth');
+
+
+
+Route::get('editeur/user/edit','UsersController@editProfile')->middleware('auth');
+
+
+
+Route::patch('editeur/user/update','UsersController@updateProfile')->middleware('auth');
+
+
+
+Route::resource('admin/users','UsersController')->middleware(['admin','auth']);
 
 
 
