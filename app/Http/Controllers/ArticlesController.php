@@ -55,9 +55,9 @@ class ArticlesController extends Controller
     {
         $request->validate([
             'photo'=>'required',
-            'titre'=>'required',            
+            'titre'=>'required|max:40',            
             'content'=>'required',           
-            'categorie'=>'required',           
+            'categorie'=>'required|max:40',           
         ]);  
         $id=Auth::id();
         $fileName= request()->file('photo')->getClientOriginalName();
@@ -145,14 +145,17 @@ class ArticlesController extends Controller
     public function update(Request $request, Article $article)
     {
         $request->validate([
-            'photo'=>'required',
-            'titre'=>'required',            
+            
+            'titre'=>'required|max:40',            
             'content'=>'required',           
-            'categorie'=>'required',           
-        ]);  
-        $fileName= request()->file('photo')->getClientOriginalName();
-        $path= request()->file('photo')->storeAs('articles',$fileName);
-        $article->photo = "storage/".$path;        
+            'categorie'=>'required|max:40',           
+        ]);
+        if(request('photo')){
+
+            $fileName= request()->file('photo')->getClientOriginalName();
+            $path= request()->file('photo')->storeAs('articles',$fileName);
+            $article->photo = "storage/".$path;        
+        }  
         $article->titre = request()->input('titre');
         $article->content = request()->input('content');       
         if(Categorie::where('categorie',request()->input('categorie'))->count()===1){

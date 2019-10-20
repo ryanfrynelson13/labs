@@ -67,6 +67,11 @@
     ];
 
 @endphp
+<form action="{{route('services.index')}}">
+    <button type="submit" class="close bg-danger p-2" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</form>
 <form action="{{route('services.store')}}" method="POST">
 @csrf
 @method('POST')

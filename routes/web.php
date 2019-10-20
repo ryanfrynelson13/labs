@@ -127,11 +127,11 @@ Route::resource('admin/teams','TeamsController')->middleware(['admin','auth']);
 
 
 
-Route::get('editeur/articles','ArticlesController@editeur')->middleware('auth');
+Route::get('editeur/articles','ArticlesController@editeur')->middleware(['editeur','auth']);
 
 
 
-Route::resource('admin/articles','ArticlesController')->middleware('auth');
+Route::resource('admin/articles','ArticlesController')->middleware(['auth']);
 
 
 
@@ -139,15 +139,15 @@ Route::resource('admin/tags','TagsController')->middleware(['admin','auth']);
 
 
 
-Route::get('editeur/profile','UsersController@profile')->middleware('auth');
+Route::get('editeur/profile','UsersController@profile')->middleware(['editeur','auth']);
 
 
 
-Route::get('editeur/user/edit','UsersController@editProfile')->middleware('auth');
+Route::get('editeur/user/edit','UsersController@editProfile')->middleware(['editeur','auth']);
 
 
 
-Route::patch('editeur/user/update','UsersController@updateProfile')->middleware('auth');
+Route::patch('editeur/user/update','UsersController@updateProfile')->middleware(['editeur','auth']);
 
 
 

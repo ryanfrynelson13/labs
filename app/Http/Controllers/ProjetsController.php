@@ -39,7 +39,7 @@ class ProjetsController extends Controller
     {        
         $request->validate([
             'photo'=>'required',
-            'titre'=>'required',
+            'titre'=>'required|max:40',
             'text'=>'required'
         ]);
         $projet= new Projet();
@@ -84,14 +84,16 @@ class ProjetsController extends Controller
      */
     public function update(Request $request, Projet $projet)
     {
-        $request->validate([
-            'photo'=>'required',
-            'titre'=>'required',
+        $request->validate([            
+            'titre'=>'required|max:40',
             'text'=>'required'
-        ]);       
-        $fileName= request()->file('photo')->getClientOriginalName();
-        $path= request()->file('photo')->storeAs('projets',$fileName);
-        $projet->photo = "storage/".$path;        
+        ]); 
+        if(request('photo')) {
+
+            $fileName= request()->file('photo')->getClientOriginalName();
+            $path= request()->file('photo')->storeAs('projets',$fileName);
+            $projet->photo = "storage/".$path;        
+        }     
         $projet->titre = request()->input('titre');
         $projet->content = request()->input('text');
         $projet->save();

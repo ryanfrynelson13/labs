@@ -3,6 +3,11 @@
 @section('title', 'AdminLTE')
 
 @section('content')
+<form action="{{route('articles.show',$article->id)}}">
+    <button type="submit" class="close bg-danger p-2" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</form>
 <form action="{{route('articles.update',$article->id)}}" enctype="multipart/form-data" method="POST">
 @csrf
 @method('PATCH')

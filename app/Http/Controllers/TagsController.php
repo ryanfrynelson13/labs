@@ -41,6 +41,9 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'tag'=>'required|max:15'
+        ]);
         if (Tag::where('tag',request('tag'))->count()===1) {
             $tag=Tag::where('tag',request('tag'))->get();            
             if(Taglien::where('article_id',request('article'))->where('tag_id',$tag[0]->id)->count()===1){                   
@@ -101,6 +104,9 @@ class TagsController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
+        $request->validate([
+            'tag'=>'required|max:15'
+        ]);
         if($tag->tag === request()->input('tag') ){
             return back();
         } else{

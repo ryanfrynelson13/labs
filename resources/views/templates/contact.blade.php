@@ -1,4 +1,13 @@
 <!-- Contact section -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="contact-section spad fix">
     <div class="container">
         <div class="row">
@@ -29,17 +38,8 @@
                     </div>
                 @endif                
                 @if ($content->id === 30)
-                <div class="col-md-6 col-pull">
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                        <form action="message" method="Post" class="form-class" id="con_form">
+                <div class="col-md-6 col-pull">                        
+                        <form action="message" method="GET" class="form-class" id="con_form">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <input type="text" name="name" placeholder="{{$content->content}}">

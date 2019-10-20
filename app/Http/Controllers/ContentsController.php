@@ -32,7 +32,9 @@ class ContentsController extends Controller
 
     public function navUpdate(Request $request, Content $content)
     {    
-       
+        $request->validate([
+            'content'=>'max:20'
+        ]);
         $content->content = request()->input('content');          
         $content->save();
         return redirect()->route('nav');
@@ -48,7 +50,9 @@ class ContentsController extends Controller
 
     public function carouselUpdate(Request $request, Content $content)
     {    
-       
+        $request->validate([
+            'content'=>'max:120'
+        ]);
         $content->content = request()->input('content');          
         $content->save();
         return redirect()->route('carousel');
@@ -70,8 +74,16 @@ class ContentsController extends Controller
 
     public function aboutUpdate(Request $request, Content $content)
     {    
-       
-        $content->content = request()->input('content');          
+        $request->validate([
+            'content'=>'max:30',            
+        ]);
+        if (request('content')) {
+            $content->content = request()->input('content');          
+            
+        }
+        if(request('area')){
+            $content->content = request()->input('area');
+        }
         $content->save();
         return redirect()->route('about');
     }
@@ -84,7 +96,9 @@ class ContentsController extends Controller
 
     public function testimonialUpdate(Request $request, Content $content)
     {    
-       
+        $request->validate([
+            'content'=>'max:100',            
+        ]);
         $content->content = request()->input('content');          
         $content->save();
         return redirect()->route('testimonials');
@@ -100,7 +114,9 @@ class ContentsController extends Controller
 
     public function teamUpdate(Request $request, Content $content)
     {    
-       
+        $request->validate([
+            'content'=>'max:20',            
+        ]);
         $content->content = request()->input('content');          
         $content->save();
         return redirect()->route('team');
@@ -117,7 +133,16 @@ class ContentsController extends Controller
     public function standUpdate(Request $request, Content $content)
     {    
        
-        $content->content = request()->input('content');          
+        $request->validate([
+            'bouton'=>'max:20',            
+        ]);
+        if (request('content')) {
+            $content->content = request()->input('content');          
+            
+        }
+        if(request('bouton')){
+            $content->content = request()->input('bouton');
+        }         
         $content->save();
         return redirect()->route('stand');
     }
@@ -131,8 +156,16 @@ class ContentsController extends Controller
 
     public function contactUpdate(Request $request, Content $content)
     {    
-       
-        $content->content = request()->input('content');          
+        $request->validate([
+            'content'=>'max:20',            
+        ]);
+        if (request('content')) {
+            $content->content = request()->input('content');          
+            
+        }
+        if(request('area')){
+            $content->content = request()->input('area');
+        }                  
         $content->save();
         return redirect()->route('contact');
     }
@@ -146,7 +179,9 @@ class ContentsController extends Controller
 
     public function serviceUpdate(Request $request, Content $content)
     {    
-       
+        $request->validate([
+            'content'=>'max:30',            
+        ]);
         $content->content = request()->input('content');          
         $content->save();
         return redirect()->route('service');
@@ -163,7 +198,9 @@ class ContentsController extends Controller
 
     public function newsUpdate(Request $request, Content $content)
     {    
-       
+        $request->validate([
+            'content'=>'max:20',            
+        ]);
         $content->content = request()->input('content');          
         $content->save();
         return redirect()->route('news');
@@ -184,6 +221,7 @@ class ContentsController extends Controller
     public function newsletter(Request $request){
         $request->validate([            
             'email'=>'required|unique:newsletters,email',
+            'email'=>'email'
            
         ]);
         $sub=new Newsletter();
@@ -208,7 +246,7 @@ class ContentsController extends Controller
     public function message(Request $request){
         $request->validate([
             'name'=>'required',
-            'email'=>'required',
+            'email'=>'required|email',
             'subject'=>'required',
             'message'=>'required',
         ]);
@@ -221,5 +259,6 @@ class ContentsController extends Controller
             
             Mail::to($admin->email)->send(new Contact($name,$email,$subject,$message));
         }
+        return back();
     }
 }

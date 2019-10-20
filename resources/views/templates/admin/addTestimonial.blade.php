@@ -3,11 +3,16 @@
 @section('title', 'AdminLTE')
 
 @section('content')
+<form action="{{route('testimonials.index')}}">
+    <button type="submit" class="close bg-danger p-2" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</form>
 <form action="{{route('testimonials.store')}}" enctype="multipart/form-data" method="POST">
 @csrf
 @method('POST')
     <div class="text-center">
-            <h2>Ajouter Projet</h2>
+            <h2>Ajouter Testimonial</h2>
     </div>
     <br>
     <div class="form-group">

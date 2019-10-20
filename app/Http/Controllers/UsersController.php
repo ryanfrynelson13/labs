@@ -46,10 +46,10 @@ class UsersController extends Controller
         $user=new User();
         if(request('role')==="editeur"){
             $request->validate([
-                'name'=>'required',
+                'name'=>'required|max:40',
                 'photo'=>'required',
                 'description'=>'required',
-                'email'=>'required|unique:users,email',
+                'email'=>'required|unique:users,email|email',
                 'password'=>'required'
                 
             ]);
@@ -67,8 +67,8 @@ class UsersController extends Controller
             
         }else{
             $request->validate([
-                'name'=>'required',                
-                'email'=>'required|unique:users,email',
+                'name'=>'required|max:40',                
+                'email'=>'required|unique:users,email|email',
                 'password'=>'required'                
             ]);
             if(request('photo')){
@@ -122,10 +122,10 @@ class UsersController extends Controller
     {
         if(request('role')==="editeur"){
             $request->validate([
-                'name'=>'required',
+                'name'=>'required|max:40',
                 'photo'=>'required',
                 'description'=>'required',
-                'email'=>'required|unique:users,email',
+                'email'=>'required|unique:users,email|email',
                 
             ]);
             $fileName= request()->file('photo')->getClientOriginalName();
@@ -141,8 +141,8 @@ class UsersController extends Controller
             
         }else{
             $request->validate([
-                'name'=>'required',                
-                'email'=>'required|unique:users,email',                
+                'name'=>'required|max:40',                
+                'email'=>'required|unique:users,email|email',                
             ]);
             if(request('photo')){
                 $fileName= request()->file('photo')->getClientOriginalName();
@@ -220,15 +220,17 @@ class UsersController extends Controller
     public function updateProfile(Request $request){
         $user=Auth::user();
         $request->validate([
-            'name'=>'required',
-            'photo'=>'required',
+            'name'=>'required|max:40',            
             'description'=>'required',
-            'email'=>'required|unique:users,email',
+            'email'=>'required|unique:users,email|email',
             
         ]);
-        $fileName= request()->file('photo')->getClientOriginalName();
-        $path= request()->file('photo')->storeAs('user',$fileName);
-        $user->photo = "storage/".$path;
+        if(request('photo')){
+            $fileName= request()->file('photo')->getClientOriginalName();
+            $path= request()->file('photo')->storeAs('user',$fileName);
+            $user->photo = "storage/".$path;
+
+        }
         $user->name = request('name');        
         $user->email = request('email');        
         $user->description = request('description');        

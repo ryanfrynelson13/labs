@@ -3,6 +3,15 @@
 @section('title', 'AdminLTE')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     
 <div class="box">
     <div class="box-header">
@@ -49,7 +58,7 @@
                     @csrf
                     @method('PATCH')
                         <td>{{$text1->placement}}</td>
-                        <td><textarea class="form-control" rows="5" name="content" id="">{{$text1->content}}</textarea></td>           
+                        <td><textarea class="form-control" rows="5" name="area" id="">{{$text1->content}}</textarea></td>           
                         <td><button class="btn btn-primary" type="submit">Edit</button></td>
                     </form> 
                 </tr>
@@ -58,7 +67,7 @@
                     @csrf
                     @method('PATCH')
                         <td>{{$text2->placement}}</td>
-                        <td><textarea class="form-control" rows="5"  name="content" id="">{{$text2->content}}</textarea></td>             
+                        <td><textarea class="form-control" rows="5"  name="area" id="">{{$text2->content}}</textarea></td>             
                         <td><button class="btn btn-primary" type="submit">Edit</button></td>
                     </form> 
                 </tr>
@@ -100,15 +109,7 @@
                 </tr>               
             </tbody>
         </table>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+       
       
     </div>
     

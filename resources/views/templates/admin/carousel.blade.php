@@ -3,6 +3,15 @@
 @section('title', 'AdminLTE')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     
 <div class="box">
     <div class="box-header">
@@ -47,16 +56,6 @@
                 
             </tbody>
         </table>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-      
     </div>
     
     <!-- /.box-body -->

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Closure;
 
-class Admin
+class Editeur
 {
     /**
      * Handle an incoming request.
@@ -14,8 +14,8 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
-   public function handle($request,Closure $next){
-        if(Auth::user()->role === 'admin'){
+    public function handle($request,Closure $next){
+        if(Auth::user()->role === 'editeur'){
             return $next($request);
         }
         return redirect('/home');

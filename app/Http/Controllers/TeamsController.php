@@ -40,8 +40,8 @@ class TeamsController extends Controller
     {
         $request->validate([
             'photo'=>'required',
-            'title'=>'required',            
-            'name'=>'required',           
+            'title'=>'required|max:40',            
+            'name'=>'required|max:40',         
         ]);  
         
         
@@ -97,14 +97,16 @@ class TeamsController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        $request->validate([
-            'photo'=>'required',
-            'title'=>'required',            
-            'name'=>'required',           
-        ]);  
-        $fileName= request()->file('photo')->getClientOriginalName();
-        $path= request()->file('photo')->storeAs('team',$fileName);
-        $team->photo = "storage/".$path;        
+        $request->validate([            
+            'title'=>'required|max:40',            
+            'name'=>'required|max:40',           
+        ]); 
+        if(request('photo')){
+            $fileName= request()->file('photo')->getClientOriginalName();
+            $path= request()->file('photo')->storeAs('team',$fileName);
+            $team->photo = "storage/".$path;         
+        } 
+               
         $team->title = request()->input('title');
         $team->name = request()->input('name');
         if(request()->input('boss')){            

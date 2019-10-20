@@ -39,7 +39,7 @@ class ServicesController extends Controller
     {
         $request->validate([
             'logo'=>'required',
-            'titre'=>'required',
+            'titre'=>'required|max:40',
             'text'=>'required'
         ]);
         $service= new Service();
@@ -84,7 +84,7 @@ class ServicesController extends Controller
     {
         $request->validate([
             'logo'=>'required',
-            'titre'=>'required',
+            'titre'=>'required|max:40',
             'text'=>'required'
         ]);       
         $service->logo = request()->input('logo');

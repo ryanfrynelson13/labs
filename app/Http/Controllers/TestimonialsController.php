@@ -38,9 +38,9 @@ class TestimonialsController extends Controller
     {
         $request->validate([
             'photo'=>'required',
-            'quote'=>'required',            
-            'title'=>'required',
-            'name'=>'required'
+            'quote'=>'required|max:200',            
+            'title'=>'required|max:40',
+            'name'=>'required|max:40'
         ]);  
         $testimonial=new Testimonial();     
         $fileName= request()->file('photo')->getClientOriginalName();
@@ -86,14 +86,15 @@ class TestimonialsController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         $request->validate([
-            'photo'=>'required',
-            'quote'=>'required',            
-            'title'=>'required',
-            'name'=>'required'
+            'quote'=>'required|max:200',            
+            'title'=>'required|max:40',
+            'name'=>'required|max:40'
         ]); 
-        $fileName= request()->file('photo')->getClientOriginalName();
-        $path= request()->file('photo')->storeAs('testimonials',$fileName);
-        $testimonial->photo = "storage/".$path;        
+        if(request('photo')){
+            $fileName= request()->file('photo')->getClientOriginalName();
+            $path= request()->file('photo')->storeAs('testimonials',$fileName);
+            $testimonial->photo = "storage/".$path;
+        }
         $testimonial->title = request()->input('title');
         $testimonial->name = request()->input('name');
         $testimonial->quote = request()->input('quote');

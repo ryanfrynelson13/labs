@@ -5,6 +5,11 @@
 
 
 @section('content')
+<form action="/editeur/profile">
+    <button type="submit" class="close bg-danger p-2" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</form>
 <form action="update" enctype="multipart/form-data" method="POST">
 @csrf
 @method('PATCH')
